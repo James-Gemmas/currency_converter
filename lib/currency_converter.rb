@@ -22,7 +22,7 @@ module CurrencyConverter
       return (amount * RATES[from][to]).round(2)
     end
     
-    # Если прямого курса нет, пробуем через USD
+    # Если прямого курса нет, то пробуем через USD
     if RATES[from] && RATES[from][:usd] && RATES[:usd] && RATES[:usd][to]
       rate = RATES[:usd][to] / RATES[from][:usd]
       return (amount * rate).round(2)
