@@ -6,11 +6,11 @@ Gem::Specification.new do |spec|
   spec.name = "currency_converter"
   spec.version = CurrencyConverter::VERSION
   spec.authors = ["Rubanov Artem, Vediashkina Olga"]
-  spec.email = ["arubanov@sfedu.ru"]
+  spec.email = ["rubanov_art@mail.ru, vedyashkinaolya@gmail.com"]
 
   spec.summary = "Простой конвертер для валют для Ruby"
   spec.description = "Конвертирует суммы из одной валюты в другую, используя актуальные курсы. Поддерживает USD, EUR, RUB и другие валюты"
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage = "https://github.com/James-Gemmas/currency_converter.git"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
