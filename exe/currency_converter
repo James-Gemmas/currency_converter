@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/currency_converter"
+
+if ARGV.length < 3
+  puts "Использование: currency_converter СУММА ИЗ В"
+  puts "Пример: currency_converter 100 usd eur"
+  puts ""
+  puts "Поддерживаемые валюты: usd, eur, rub, gbp"
+  exit 1
+end
+
+amount = ARGV[0].to_f
+from = ARGV[1].to_sym
+to = ARGV[2].to_sym
+
+begin
+  result = CurrencyConverter.convert(amount, from, to)
+  puts "#{amount} #{from.to_s.upcase} = #{result} #{to.to_s.upcase}"
+rescue => e
+  puts "Ошибка: #{e.message}"
+  exit 1
+end
