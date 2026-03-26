@@ -5,15 +5,16 @@
 
 Склонируйте репозиторий и установите зависимости:
 
-bash
+```bash
 git clone https://github.com/James-Gemmas/currency_converter.git
 cd currency_converter
 bundle install
-
+```
 ## Использвание в коде
 
 Подключите гем и вызовите метод convert:
 
+```ruby
 require_relative 'lib/currency_converter'
 
 # Конвертация 100 долларов в евро
@@ -24,6 +25,7 @@ puts CurrencyConverter.convert(5000, :rub, :usd)
 
 # Конвертация 50 евро в рубли
 puts CurrencyConverter.convert(50, :eur, :rub)
+```
 
 ## Поддерживаемые валюты: 
 
@@ -37,6 +39,7 @@ puts CurrencyConverter.convert(50, :eur, :rub)
 ## Использование из командной строки (CLI)
 После установки гема становится доступна команда currency_converter:
 
+```bash
 # Конвертация 100 долларов в евро
 currency_converter 100 usd eur
 
@@ -45,25 +48,32 @@ currency_converter 5000 rub usd
 
 # аргументов недостаточно, выводится подсказка
 currency_converter 100 usd
+```
 
 # Если гем не установлен глобально, можно запустить CLI напрямую:
+```bash
 ruby exe/currency_converter 100 usd eur
-
+```
 
 
 ## Тестирование
 Для запуска тестов выполните:
+```bash
 rake test
+```
 или
+```bash
 ruby test/test_currency_converter.rb
+```
 
 Результат успешного тестирования:
+```text
 8 runs, 20 assertions, 0 failures, 0 errors
-
+```
 
 
 ## Структура проекта
-
+```text
 currency_converter/
 ├── exe/                        # Исполняемый файл CLI
 │   └── currency_converter
@@ -75,7 +85,7 @@ currency_converter/
 ├── test/                       # Тесты
 │   └── test_currency_converter.rb
 └── README.md
-
+```
 
 ## Авторы
 Артём Рубанов – CLI интерфейс, тестирование, документация
