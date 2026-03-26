@@ -1,35 +1,85 @@
 # CurrencyConverter
+Конвертер валют на Ruby. Позволяет переводить суммы из одной валюты в другую, используя актуальные курсы. При наличии интернета загружает курсы через API, при отсутствии использует резервные значения.
 
-TODO: Delete this and the text below, and describe your gem
+## Установка
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/currency_converter`. To experiment with that code, run `bin/console` for an interactive prompt.
+Склонируйте репозиторий и установите зависимости:
 
-## Installation
+bash
+git clone https://github.com/James-Gemmas/currency_converter.git
+cd currency_converter
+bundle install
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+## Использвание в коде
 
-Install the gem and add to the application's Gemfile by executing:
+Подключите гем и вызовите метод convert:
 
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+require_relative 'lib/currency_converter'
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+# Конвертация 100 долларов в евро
+puts CurrencyConverter.convert(100, :usd, :eur)
 
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
+# Конвертация 5000 рублей в доллары
+puts CurrencyConverter.convert(5000, :rub, :usd)
 
-## Usage
+# Конвертация 50 евро в рубли
+puts CurrencyConverter.convert(50, :eur, :rub)
 
-TODO: Write usage instructions here
+## Поддерживаемые валюты: 
 
-## Development
+Без интернета: USD, EUR, RUB, GBP
+При наличии интернета: загружаются актуальные курсы для 166 валют мира
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Курсы обновляются автоматически раз в час. Принудительно обновить можно методом CurrencyConverter.refresh_rates!.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## Использование из командной строки (CLI)
+После установки гема становится доступна команда currency_converter:
+
+# Конвертация 100 долларов в евро
+currency_converter 100 usd eur
+
+# Конвертация 5000 рублей в доллары
+currency_converter 5000 rub usd
+
+# аргументов недостаточно, выводится подсказка
+currency_converter 100 usd
+
+# Если гем не установлен глобально, можно запустить CLI напрямую:
+ruby exe/currency_converter 100 usd eur
+
+
+
+## Тестирование
+Для запуска тестов выполните:
+rake test
+или
+ruby test/test_currency_converter.rb
+
+Результат успешного тестирования:
+8 runs, 20 assertions, 0 failures, 0 errors
+
+
+
+## Структура проекта
+
+currency_converter/
+├── exe/                        # Исполняемый файл CLI
+│   └── currency_converter
+├── lib/
+│   ├── currency_converter.rb   # Основная логика конвертации
+│   └── currency_converter/
+│       ├── version.rb          # Версия гема
+│       └── api_loader.rb       # Загрузка курсов через API
+├── test/                       # Тесты
+│   └── test_currency_converter.rb
+└── README.md
+
+
+## Авторы
+Артём Рубанов – CLI интерфейс, тестирование, документация
+Ольга Ведяшкина – API интеграция, документация
+
+## Лицензия
+Проект распространяется под лицензией MIT.
