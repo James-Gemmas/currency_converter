@@ -15,6 +15,7 @@ bundle install
 Подключите гем и вызовите метод convert:
 
 ```ruby
+irb -I lib -r currency_converter
 require_relative 'lib/currency_converter'
 
 # Конвертация 100 долларов в евро
