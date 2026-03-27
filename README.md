@@ -39,25 +39,45 @@ puts CurrencyConverter.convert(50, :eur, :rub)
 CurrencyConverter.refresh_rates!
 ```
 
+
 ## Использование из командной строки (CLI)
-После установки гема становится доступна команда currency_converter:
+
+### Способ 1. Через Bundler (рекомендуется)
+
+После клонирования репозитория и установки зависимостей (`bundle install`) запускайте CLI так:
 
 ```bash
-# Конвертация 100 долларов в евро
-currency_converter 100 usd eur
-
-# Конвертация 5000 рублей в доллары
-currency_converter 5000 rub usd
-
-# аргументов недостаточно, выводится подсказка
-currency_converter 100 usd
+bundle exec currency_converter 100 usd eur
 ```
+### Примеры
 
-## Если гем не установлен глобально, можно запустить CLI напрямую:
+```bash
+bundle exec currency_converter 100 usd eur
+# => 100 USD = 86.4 EUR
+
+bundle exec currency_converter 5000 rub usd
+# => 5000 RUB = 54.05 USD
+
+bundle exec currency_converter 50 eur rub
+# => 50 EUR = 4688.08 RUB
+
+bundle exec currency_converter 100 usd
+# => Использование: currency_converter СУММА ИЗ В
+#    Пример: currency_converter 100 usd eur
+```
+### Способ 2. Глобальная установка гема
+
+Если вы хотите использовать команду currency_converter без bundle exec:
+
+```bash
+gem install currency_converter
+currency_converter 100 usd eur
+```
+### Способ 3. Запуск напрямую (без установки)
+
 ```bash
 ruby exe/currency_converter 100 usd eur
 ```
-
 
 ## Тестирование
 Для запуска тестов выполните:
