@@ -16,7 +16,7 @@ bundle install
 
 ```ruby
 irb -I lib -r currency_converter
-require_relative 'lib/currency_converter'
+
 
 # Конвертация 100 долларов в евро
 puts CurrencyConverter.convert(100, :usd, :eur)
